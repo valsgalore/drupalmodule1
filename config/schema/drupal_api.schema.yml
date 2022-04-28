@@ -1,0 +1,10 @@
+drupal_api.config:
+  type: config_object
+  label: 'Drupal API configuration'
+  mapping:
+    automatic:
+      type: boolean
+      label: 'Enable automatic imports'
+    interval:
+      type: integer
+      label: 'How often to import automatically'

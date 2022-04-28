@@ -1,0 +1,26 @@
+drupal_api.latest_modules:
+  path: '/latest-modules'
+  defaults:
+    _title: 'Latest Drupal Modules'
+    _controller: '\Drupal\drupal_api\Controller\DrupalAPIController::latestModules'
+  requirements:
+    _permission: 'access content'
+
+drupal_api.latest_themes:
+  path: '/latest-themes'
+  defaults:
+    _title: 'Latest Drupal Themes'
+    _controller: '\Drupal\drupal_api\Controller\DrupalAPIController::latestThemes'
+  requirements:
+    _permission: 'access content'
+
+drupal_api.settings:
+  path: '/admin/config/drupal_api'
+  defaults:
+    _title: 'Drupal API Settings'
+    _form: '\Drupal\drupal_api\Form\DrupalApiSettings'
+  requirements:
+    _permission: 'administer modules'
+  options:
+    _admin_route: TRUE
+

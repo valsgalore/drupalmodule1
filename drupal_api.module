@@ -1,0 +1,40 @@
+<?php
+
+/**
+ * Implements hook_cron().
+ */
+function drupal_api_cron() {
+  $config = \Drupal::config('drupal_api.config');
+
+  //Check whether automatic fetching is enabled.
+  //Using State API, determine whether enough time has elapsed since the last fetch
+  if ($config->get('automatic')) {
+    // Implements \Drupal\Core\State\StateInterface
+    $state = \Drupal::state();
+    $state = \Drupal::service('state');
+    $lastrun = $state->get('drupal_api.last_api_import');
+    $interval = $config->get('interval');
+    $now = \Drupal::time()->getRequestTime();
+    if (empty($lastrun) || $interval <= $now - $lastrun) {
+      //Make fetch happen
+      \Drupal::service('drupal_api.manager')->fetchLatestProjects();
+      // update the import time in State object
+      $state->set('drupal_api.last_api_import', \Drupal::time()->getRequestTime());
+    }
+
+  }
+
+
+}
+
+function drupal_api_theme($existing, $type, $theme, $path) {
+  return [
+    'drupal_api_project' => [
+      'variables' => [
+        'project' => NULL,
+        'description' => NULL,
+        'formatted_date' => NULL,
+      ],
+    ],
+  ];
+}

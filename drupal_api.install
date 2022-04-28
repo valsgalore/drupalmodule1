@@ -1,0 +1,59 @@
+<?php
+
+/**
+ * Implements hook_schema().
+ */
+function drupal_api_schema() {
+  $schema = [];
+
+  $schema['drupal_api'] = [
+    'description' => 'Information about projects on Drupal.org',
+    'fields' => [
+      'project_id' => [
+        'description' => 'Unique ID of project',
+        'type' => 'int',
+        'not null' => TRUE,
+        'unsigned' => TRUE,
+      ],
+      'type' => [
+        'description' => 'Project type',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+      'name' => [
+        'description' => 'Project Name',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+      'created' => [
+        'description' => 'Project creation date',
+        'type' => 'int',
+        'length' => 11,
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+      'url' => [
+        'description' => 'Project homepage',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+      'description' => [
+        'description' => 'Project description',
+        'type' => 'text',
+        'not null' => FALSE,
+      ],
+    ],
+    'primary key' => ['project_id'],
+    'indexes' => [
+    ],
+  ];
+
+  return $schema;
+
+}

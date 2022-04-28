@@ -1,0 +1,6 @@
+name: Drupal API
+type: module
+description: Pulls list of available Drupal modules
+package: Training
+core: 8.x
+core_version_requirement: ^8 || ^9

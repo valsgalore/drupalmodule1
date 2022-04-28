@@ -1,0 +1,5 @@
+drupal_api.settings:
+  title: 'Drupal API Settings'
+  description: ''
+  parent: system.admin_config_services
+  route_name: drupal_api.settings

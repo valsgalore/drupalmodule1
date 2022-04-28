@@ -1,0 +1,6 @@
+<article class="module">
+<h2>{{ project.name }}</h2>
+<p>Created: {{ formatted_date }}</p>
+<p>{{ project.description|render|striptags }}</p>
+<div class="project-link"><a href="{{ project.url }}">Visit</a></div>
+</article>

@@ -1,0 +1,7 @@
+drupal_api.change:
+  route_name: drupal_api.settings
+  title: 'Settings for this list'
+  appears_on:
+    - drupal_api.latest_modules
+  requirements:
+    permission: 'administer modules'
